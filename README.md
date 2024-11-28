@@ -1,7 +1,7 @@
 StudentScoreServer
 ===
 
-API server for the project [StudentScoreWebApp](https://github.com) written with Express, Javascript. 
+API server for the project [StudentScoreWebApp](https://github.com/Kachornpat/StudentScoreWebApp) written with Express, Javascript. 
 The database for this project is `MySQL`
 
 # Run the project
