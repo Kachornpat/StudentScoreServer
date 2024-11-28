@@ -64,6 +64,23 @@ router.patch('/updateStudent', auth.authenticationToken, user_role.roleValidatio
         });
 });
 
-router.delete('/delete/:studentId');
+
+router.delete('/delete/:studentId', auth.authenticationToken, (req, res) => {
+    let student_id = req.params.studentId;
+    let query = "DELETE FROM student WHERE id=?";
+    connection.query(query, [student_id], (err, result) => {
+        if (err)
+        {
+            return res.status(500).json(err);
+        }
+        if (result.affectedRows == 0){
+            return res.status(404).json({message: "Student id not found"})
+        }
+        return res.status(200).json({
+            message: "student deleted sucessfully!",
+            result: result
+        })
+    })
+});
 
 module.exports = router;

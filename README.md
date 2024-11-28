@@ -33,8 +33,9 @@ $ npm start
 ### Student endpoints
 
 - [GET /student/getStudents](#get-studentgetstudents)
--  [POST /student/addStudent](#post-studentaddstudent)
+- [POST /student/addStudent](#post-studentaddstudent)
 - [PATCH /student/updateStudent](#patch-studentupdatestudent)
+- [DELETE /student/deleteStudent/{student_id}](#patch-studentdeletestudentstudent_id)
 
 ### Score endpoints
 
@@ -42,6 +43,8 @@ $ npm start
 - [GET /score/getScoreById/{student_id}](#get-scoregetscorebyidstudent_id)
 - [POST /score/addScore](#post-scoreaddscore)
 - [PATCH /score/updateScore](#patch-scoreupdatescore)
+- [DELETE /score/delete/{student_id}](#patch-scoredeletestudent_id)
+
 
 ## GET /user/tokenIsValid
 
@@ -196,6 +199,30 @@ Update specified student's first name, last name and nick name.
 }
 ```
 
+## DELETE /student/deleteStudent/{student_id}
+
+Delete the specified student
+
+#### Query:
+- `student_id` **number** id of the student to update.
+
+#### Response:
+```
+{
+    "message": "studentScore deleted sucessfully!",
+    "result": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 0,
+        "serverStatus": 2,
+        "warningCount": 0,
+        "message": "",
+        "protocol41": true,
+        "changedRows": 0
+    }
+}
+```
+
 ## GET /score/getScores
 
 Get list of student's score.
@@ -278,6 +305,30 @@ Update the student's score.
         "message": "(Rows matched: 1  Changed: 1  Warnings: 0",
         "protocol41": true,
         "changedRows": 1
+    }
+}
+```
+
+## DELETE /score/delete/{student_id}
+
+Delete the student's score.
+
+#### Query:
+- `student_id` **number** student's id to delete.
+
+#### Response:
+```
+{
+    "message": "studentScore deleted sucessfully!",
+    "result": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 0,
+        "serverStatus": 2,
+        "warningCount": 0,
+        "message": "",
+        "protocol41": true,
+        "changedRows": 0
     }
 }
 ```

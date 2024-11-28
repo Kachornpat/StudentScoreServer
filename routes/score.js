@@ -33,8 +33,6 @@ router.get('/getScoreById/:studentId', auth.authenticationToken, (req,res, next)
     )
 });
 
-// router.delete('/delete/:studentId');
-
 router.post('/addScore', auth.authenticationToken, (req, res, next) => {
     let new_student_score = req.body;
     let query = "INSERT INTO studentScore (student_id, score) VALUES (?, ?)"
@@ -71,6 +69,24 @@ router.patch('/updateScore', auth.authenticationToken, (req, res, next) => {
                 result: result
             });
         });
+});
+
+router.delete('/delete/:studentId', auth.authenticationToken, (req, res) => {
+    let student_id = req.params.studentId;
+    let query = "DELETE FROM studentScore WHERE student_id=?";
+    connection.query(query, [student_id], (err, result) => {
+        if (err)
+        {
+            return res.status(500).json(err);
+        }
+        if (result.affectedRows == 0){
+            return res.status(404).json({message: "Student id not found"})
+        }
+        return res.status(200).json({
+            message: "studentScore deleted sucessfully!",
+            result: result
+        })
+    })
 });
 
 module.exports = router;
