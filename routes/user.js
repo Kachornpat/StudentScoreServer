@@ -4,8 +4,25 @@ const jwt = require("jsonwebtoken");
 
 const connection = require("../connection");
 let auth = require('../services/authentication');
+let user_role = require('../services/role');
 
 const router = express.Router();
+
+router.get('/tokenIsValid', auth.authenticationToken, (req, res) => {
+    return res.status(200).json({status: "valid"})
+})
+
+router.get('/getUsers', auth.authenticationToken, user_role.roleValidation,(req, res) => {
+    let query = "SELECT id, username, email, status FROM user"
+    connection.query(query, (err, data) => {
+        if (!err) {
+            return res.status(200).json(data);
+        }
+        else {
+            return res.status(500).json(err);
+        }
+    })
+})
 
 router.post('/signup', (req, res) => {
     let user = req.body;
@@ -65,5 +82,6 @@ router.post('/login', (req, res) => {
         }
     });
 })
+
 
 module.exports = router;
