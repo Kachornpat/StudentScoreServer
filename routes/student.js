@@ -12,7 +12,8 @@ router.post('/addStudent', auth.authenticationToken, user_role.roleValidation, (
         [
             new_student.first_name,
             new_student.last_name,
-            new_student.nick_name
+            new_student.nick_name,
+            new_student.address,
         ],
         (err, result) => {
             if (err) {
@@ -48,6 +49,7 @@ router.patch('/updateStudent', auth.authenticationToken, user_role.roleValidatio
             update_student.first_name,
             update_student.last_name,
             update_student.nick_name,
+            update_student.address,
             update_student.id
         ],
         (err, result) => {

@@ -8,7 +8,7 @@ const router = express.Router();
 
 
 router.get('/getScores', auth.authenticationToken, (req, res, next) => {
-    let query = "SELECT student.first_name, score.score FROM student LEFT JOIN studentScore as score ON student.id = score.student_id"
+    let query = "SELECT student.id, student.first_name, student.address, score.score, student.status FROM student LEFT JOIN studentScore as score ON student.id = score.student_id"
     connection.query(query,
         (err, results) => {
             if (err) {

@@ -20,6 +20,7 @@ CREATE TABLE student(
     first_name varchar(255) NOT NULL,
     last_name varchar(255),
     nick_name varchar(100),
+    address varchar(100),
     status varchar(10) DEFAULT 'active'
 );
 

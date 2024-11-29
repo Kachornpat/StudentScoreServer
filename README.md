@@ -130,6 +130,7 @@ Get list of all students.
         "first_name": "Michael",
         "last_name": "Shimmer",
         "nick_name": "Mike",
+        "address": "USA",
         "status": "active"
     },
     {
@@ -137,6 +138,7 @@ Get list of all students.
         "first_name": "Robin",
         "last_name": "Chord",
         "nick_name": "Rob",
+        "address": "UK",
         "status": "active"
     }
 ]
@@ -153,6 +155,7 @@ Add new student to the database, one student at a time.
 - `first_name` **string**
 - `last_name` **string**
 - `nick_name` **string**
+- `address` **string**
 
 #### Response:
 ```
@@ -181,6 +184,7 @@ Update specified student's first name, last name and nick name.
 - `first_name` **string**
 - `last_name` **string**
 - `nick_name` **string**
+- `address` **string**
 
 #### Response:
 ```
@@ -232,12 +236,18 @@ Get list of student's score.
 ```
 [
     {
+        "id": 1,
         "first_name": "Michael",
-        "score": 95.5
+        "address": "USA",
+        "score": 95.5,
+        "status": "active"
     },
     {
+        "id": 2,
         "first_name": "Robin",
-        "score": 85.5
+        "address": "UK",
+        "score": 85.5,
+        "status": "active"
     }
 ]
 ```
