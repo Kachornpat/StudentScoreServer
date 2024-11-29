@@ -42,7 +42,9 @@ $ npm start
 - [GET /score/getScores](#get-scoregetscores)
 - [GET /score/getScoreById/{student_id}](#get-scoregetscorebyidstudent_id)
 - [POST /score/addScore](#post-scoreaddscore)
+- [POST /score/addStudentScore](#post-scoreaddstudentscore)
 - [PATCH /score/updateScore](#patch-scoreupdatescore)
+- [PATCH /score/updateStudentScore](#patch-scoreupdatestudentscore)
 - [DELETE /score/delete/{student_id}](#patch-scoredeletestudent_id)
 
 
@@ -262,10 +264,15 @@ Get the spcific student's score.
 
 #### Response:
 ```
-{
-    "first_name": "Michael",
-    "score": 95.5
-}
+[
+    {
+        "id": 1,
+        "first_name": "Michael",
+        "address": "USA",
+        "score": 95.5,
+        "status": "active"
+    }
+]
 ```
 
 
@@ -294,6 +301,35 @@ Add new student's score.
 }
 ```
 
+## POST /score/addStudentScore
+
+Add new student and score at the same time.
+
+#### Body:
+- `first_name` **string**
+- `last_name` **string**
+- `nick_name` **string**
+- `address` **string**
+- `score` **number**
+
+#### Response:
+```
+{
+    "message": "Add new student's score successfully",
+    "result": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 2,
+        "serverStatus": 2,
+        "warningCount": 0,
+        "message": "",
+        "protocol41": true,
+        "changedRows": 0
+    }
+}
+```
+
+
 ## PATCH /score/updateScore
 
 Update the student's score.
@@ -315,6 +351,35 @@ Update the student's score.
         "message": "(Rows matched: 1  Changed: 1  Warnings: 0",
         "protocol41": true,
         "changedRows": 1
+    }
+}
+```
+
+## PATCH /score/updateStudentScore
+
+Update the student's data and score.
+
+#### Body:
+- `id` **number**
+- `first_name` **string**
+- `last_name` **string**
+- `nick_name` **string**
+- `address` **string**
+- `score` **number**
+
+#### Response:
+```
+{
+    "message": "Update student's score successfully!",
+    "result": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 0,
+        "serverStatus": 2,
+        "warningCount": 0,
+        "message": "(Rows matched: 1  Changed: 0  Warnings: 0",
+        "protocol41": true,
+        "changedRows": 0
     }
 }
 ```

@@ -28,5 +28,4 @@ CREATE TABLE studentScore(
     id int primary key AUTO_INCREMENT,
     student_id int UNIQUE,
     score float(3),
-    status varchar(10)
 );
